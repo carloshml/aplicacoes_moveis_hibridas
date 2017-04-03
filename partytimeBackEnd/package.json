@@ -1,0 +1,18 @@
+{
+  "name": "partytimebackende",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Casca",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "consign": "^0.1.2",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-validator": "^3.1.3"
+  }
+}
