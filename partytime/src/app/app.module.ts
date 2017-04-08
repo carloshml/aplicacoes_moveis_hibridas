@@ -8,12 +8,18 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CriarNovaConta } from '../pages/criar-nova-conta/criar-nova-conta';
+import { HomeUsuario } from '../pages/home-usuario/home-usuario';
+
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
     MyApp,
     TelaLogin,
-    ListPage
+    ListPage,
+    CriarNovaConta,
+    HomeUsuario
   ],
   imports: [
     BrowserModule,
@@ -23,9 +29,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     TelaLogin,
-    ListPage
+    ListPage,
+    CriarNovaConta,
+    HomeUsuario,
+    TelaLogin
   ],
   providers: [
+    Facebook,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

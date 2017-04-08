@@ -1,34 +1,49 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage,AlertController, LoadingController,Loading, NavController } from 'ionic-angular';
+import { CriarNovaConta } from '../criar-nova-conta/criar-nova-conta';
+import { HomeUsuario } from '../home-usuario/home-usuario';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
-/**
- * Generated class for the TelaLogin page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-tela-login',
-  templateUrl: 'tela-login.html',
+  templateUrl: 'tela-login.html'
 })
-export class TelaLogin {
+export class TelaLogin {  loading: Loading;
+  registerCredentials = {email: '', password: ''};
+  FB_APP_ID: number = 1862402434040217;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private fb: Facebook, private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TelaLogin');
+  public createAccount() {
+    this.nav.push(CriarNovaConta);
   }
 
-  goToHome() {
-    // go to the MyPage component
-    this.navCtrl.push('HomeUsuario');
+  fbLogin(): void {
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+      .then((res: FacebookLoginResponse) =>  {
+          this.goHomeUsuario()
+        })
+      .catch(e => console.log('Error logging into Facebook', e));
   }
 
-  goToCriarNovaConta() {
-    // go to the MyPage component
-    this.navCtrl.push('CriarNovaConta');
+  public goHomeUsuario() {
+      this.nav.setRoot(HomeUsuario)
   }
+
+
+  showLoading() {
+  this.loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
+  this.loading.present();
+}
+
+
+
+
+
+
 
 }

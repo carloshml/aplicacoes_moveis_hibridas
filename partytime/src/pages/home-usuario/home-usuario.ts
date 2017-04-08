@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import {TelaLogin} from '.././tela-login/tela-login'
+
 
 /**
  * Generated class for the HomeUsuario page.
@@ -14,31 +16,41 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomeUsuario {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+  username = '';
+  email = '';
+  constructor(private navCtrl: NavController) {
+
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeUsuario');
   }
 
+  goToFesta() {
+    // go to the MyPage component
+    this.navCtrl.push('Festa');
+  }
 
-    goToFesta() {
-      // go to the MyPage component
-      this.navCtrl.push('Festa');
-    }
+  goToCriarFesta() {
+    // go to the MyPage component
+    this.navCtrl.push('CriarFesta');
+  }
+  goToConvites() {
+    // go to the MyPage component
+    this.navCtrl.push('Convites');
+  }
 
-    goToCriarFesta() {
-      // go to the MyPage component
-      this.navCtrl.push('CriarFesta');
-    }
-    goToConvites() {
-      // go to the MyPage component
-      this.navCtrl.push('Convites');
-    }
+  goToAmigos() {
+    // go to the MyPage component
+    this.navCtrl.push('Amigos');
+  }
 
-    goToAmigos() {
-      // go to the MyPage component
-      this.navCtrl.push('Amigos');
-    }
+  logout(){
+    this.navCtrl.push(TelaLogin);
+  }
+
 
 }

@@ -1,19 +1,26 @@
 <ion-header>
+<ion-toolbar>
+  <ion-buttons start>
+    <button ion-button (click)="logout()" icon-only color="royal" >
+            <ion-icon name="log-out"></ion-icon>
+
+    </button>
+  </ion-buttons>
+  <ion-title>Home</ion-title>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
+</ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-  <h3>Nome Usuario</h3>
-  <div class="row">
-    <button ion-button color="dark" menuToggle outline>
-      Menu Lateral
-    </button>
-  </div>
+
+    <h3>Bem vindo, {{username}}!</h3>
+
 <div class="row">
   <button ion-button color="dark"  large outline (click)="goToFesta()"  ><ion-icon name="medical"></ion-icon>
     festas ativas

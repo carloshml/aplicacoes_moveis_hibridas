@@ -1,37 +1,38 @@
-<!--
-  Generated template for the TelaLogin page.
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row img-logo-tamanho">
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
-</ion-header>
+          <img src="assets/img/baloesLogo.png" alt="">
 
 
-<ion-content padding>
-  <div class="component">
-    <div class="row">
 
+  </ion-row>
+  <div class="login-box">
+    <form  #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
 
-    </div>
-    <div class="row">
-          <input type="text" name="senha" value="" placeholder="senha">
-    </div>
-    <div class="row">
-          <input type="text" name="login" value="" placeholder="login">
-    </div>
-    <div class="row">
-      <button ion-button color="dark"   outline (click)="goToCriarNovaConta() ">
-         Criar conta </button>
-      <button ion-button color="dark"   outline (click)="goToHome()"> 
-          Entrar </button>
-    </div>
+            <ion-item>
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+            </ion-item>
 
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full (click)="goHomeUsuario()">Login</button>
+          <button ion-button class="submit-btn" full (click)="fbLogin()" >Login Facebook</button>
+          <button ion-button class="register-btn" block clear (click)="createAccount()">Criar Conta</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
   </div>
 
   <footer class="footer">
