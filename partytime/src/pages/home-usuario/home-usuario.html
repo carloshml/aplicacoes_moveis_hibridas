@@ -1,42 +1,45 @@
 <ion-header>
-<ion-toolbar>
-  <ion-buttons start>
-    <button ion-button (click)="logout()" icon-only color="royal" >
-            <ion-icon name="log-out"></ion-icon>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="logout()" icon-only color="royal" >
+        <ion-icon name="log-out"></ion-icon>
 
-    </button>
-  </ion-buttons>
-  <ion-title>Home</ion-title>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+      </button>
+    </ion-buttons>
     <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-toolbar>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
 
-    <h3>Bem vindo, {{username}}!</h3>
 
-<div class="row">
-  <button ion-button color="dark"  large outline (click)="goToFesta()"  ><ion-icon name="medical"></ion-icon>
-    festas ativas
-  </button>
-</div>
-<div class="row">
-    <button ion-button color="dark"  large outline  (click)="goToCriarFesta()"  > <ion-icon name="medical"></ion-icon>
-      Criar Festa  </button>
-</div>
-<div class="row">
+  <img src="{{foto}}" alt="">
+
+  <h3>Bem vindo, {{username}}!</h3>
+
+  <div class="row">
+    <button ion-button color="dark"  large outline (click)="goToFesta()"  ><ion-icon name="medical"></ion-icon>
+      festas ativas
+    </button>
+  </div>
+  <div class="row">
     <button ion-button color="dark"  large outline (click)="goToConvites()"> <ion-icon name="medical"></ion-icon>
-       Ver Convites </button>
-</div>
-<div class="row">
-    <button ion-button color="dark"  large outline (click)="goToAmigos()"> <ion-icon name="medical"></ion-icon>
-       Ver Amigos </button>
-</div>
+      Ver Convites </button>
+    </div>
+    <div class="row">
+      <button ion-button color="dark"  large outline (click)="goToConvidar()"> <ion-icon name="medical"></ion-icon>
+        convidar </button>
+      </div>
+      <div class="row">
+        <button ion-button color="dark"  large outline (click)="goToAmigos()"> <ion-icon name="medical"></ion-icon>
+          Ver Amigos </button>
+        </div>
 
-</ion-content>
+      </ion-content>

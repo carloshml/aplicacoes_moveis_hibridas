@@ -1,27 +1,33 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import {TelaLogin} from '.././tela-login/tela-login'
-
-
-/**
- * Generated class for the HomeUsuario page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {Convidar} from '../convidar/convidar'
+import {Festa} from '../festa/festa'
+import { AuthService } from '../../providers/auth.service';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 @IonicPage()
 @Component({
   selector: 'page-home-usuario',
   templateUrl: 'home-usuario.html',
 })
+
+
+
 export class HomeUsuario {
-
-
 
   username = '';
   email = '';
-  constructor(private navCtrl: NavController) {
-
+  id='';
+  foto = '';
+  constructor(private navCtrl: NavController,
+    private fb: Facebook,
+    private auth: AuthService
+  ) {
+    let info = this.auth.getUserInfo();
+    this.username = info.name;
+    this.email = info.email;
+    this.id = info.id ;
+    this.foto = info.foto;
   }
 
 
@@ -29,27 +35,37 @@ export class HomeUsuario {
     console.log('ionViewDidLoad HomeUsuario');
   }
 
+  mostrarUsuario(){
+
+    alert(' Usuario id ' + this.email +'  '+this.id  );
+  }
+
   goToFesta() {
-    // go to the MyPage component
-    this.navCtrl.push('Festa');
+
+    this.navCtrl.push(Festa);
   }
 
   goToCriarFesta() {
-    // go to the MyPage component
+
     this.navCtrl.push('CriarFesta');
   }
   goToConvites() {
-    // go to the MyPage component
+
     this.navCtrl.push('Convites');
   }
 
   goToAmigos() {
-    // go to the MyPage component
+
     this.navCtrl.push('Amigos');
   }
 
+  goToConvidar(){
+    this.navCtrl.push(Convidar);
+  }
+
   logout(){
-    this.navCtrl.push(TelaLogin);
+    this.fb.logout();
+    this.navCtrl.setRoot(TelaLogin);
   }
 
 

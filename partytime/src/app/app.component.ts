@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TelaLogin } from '../pages/tela-login/tela-login';
 import { ListPage } from '../pages/list/list';
+import { Festa } from '../pages/festa/festa';
+import { HomeUsuario } from '../pages/home-usuario/home-usuario';
 
 
 @Component({
@@ -25,10 +27,12 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
+    /*
     this.pages = [
-      { title: 'Home', component: TelaLogin },
-      { title: 'List', component: ListPage }
+      { title: 'Home', component: HomeUsuario },
+      { title: 'Adicionar Festas', component: Festa }
     ];
+    */
 
   }
 

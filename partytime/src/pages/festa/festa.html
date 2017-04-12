@@ -7,28 +7,35 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Festa</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Festas</ion-title>
+
+
+    <ion-buttons start>
+      <button ion-button icon-only (click)="addFesta()">
+          <ion-icon name="add"></ion-icon>
+      </button>
+
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToFestaDetalhes()"  > <ion-icon name="medical"></ion-icon>
-         Festa 1  </button>
-  </div>
-  <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToFestaDetalhes()" > <ion-icon name="medical"></ion-icon>
-         Festa 2  </button>
-  </div>
-  <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToFestaDetalhes()" > <ion-icon name="medical"></ion-icon>
-         Festa 3  </button>
-  </div>
-  <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToFestaDetalhes()" > <ion-icon name="medical"></ion-icon>
-         Festa 4  </button>
-  </div>
+
+  <ion-list>
+    <button class="tamanho-botoes"  ion-button tamanho-botoes icon-only large *ngFor="let festa of festas | async" (click)="goToFestaDetalhes(festa)"  >
+        {{festa.nome}}
+    </button>
+
+  </ion-list>
+
+
+
+
+
 
 </ion-content>

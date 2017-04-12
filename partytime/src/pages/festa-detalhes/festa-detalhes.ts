@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Festa} from '.././festa/festa';
 
 /**
  * Generated class for the FestaDetalhes page.
@@ -14,7 +15,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FestaDetalhes {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  festaSelecionada ;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public festa: Festa) {
+    this.festaSelecionada = festa.selectedFesta;
   }
 
   ionViewDidLoad() {
