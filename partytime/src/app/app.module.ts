@@ -11,6 +11,12 @@ import { CriarNovaConta } from '../pages/criar-nova-conta/criar-nova-conta';
 import { HomeUsuario } from '../pages/home-usuario/home-usuario';
 import { Festa } from '../pages/festa/festa';
 
+
+import { Convidar } from '../pages/convidar/convidar';
+import { Amigos } from '../pages/amigos/amigos';
+import { Convites } from '../pages/convites/convites';
+
+
 import { Facebook } from '@ionic-native/facebook';
 import { AngularFireModule } from 'angularfire2';
 
@@ -31,7 +37,13 @@ export const firebaseConfig = {
     TelaLogin,
     Festa,
     CriarNovaConta,
-    HomeUsuario
+    HomeUsuario,
+    Amigos,
+    Convites,
+    Convidar,
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -45,6 +57,9 @@ export const firebaseConfig = {
     Festa,
     CriarNovaConta,
     HomeUsuario,
+    Amigos,
+    Convites,
+    Convidar,
   ],
   providers: [
     AuthService,

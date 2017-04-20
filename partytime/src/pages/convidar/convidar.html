@@ -15,17 +15,38 @@
 
 <ion-content padding>
 
-  <label for="">Quem</label>
-  <input type="text" name="" value="">
 
-  <h3>ITEM</h3><br>
-  <input type="text" name="" value=""placeholder="Name">
-  <input type="text" name="" value="" placeholder="Valor">
+  <h3>ITEM</h3>
+  <ion-item>
+   <ion-label color="primary" floating>Nome do Item</ion-label>
+   <ion-input  [(ngModel)]="nomeItem"></ion-input>
+ </ion-item>
+ <ion-item>
+  <ion-label color="primary" floating>Valor do Item</ion-label>
+  <ion-input [(ngModel)]="valorItem"></ion-input>
+</ion-item>
 
-  <div class="row">
-      <button ion-button color="dark"  outline (click)="" > <ion-icon name="medical"></ion-icon>
-         convidar  </button>
-  </div>
+<h4>Quem leva?</h4>
+<ion-searchbar
+placeholder=" Buscar Amigos"
+[(ngModel)]="myInput"
+[showCancelButton]="shouldShowCancel"
+(ionInput)="search(myInput)"
+(ionCancel)="onCancel()">
+</ion-searchbar>
+
+<div>
+<div *ngFor="let usuario of usuarios | async" >
+  <h2>
+    {{usuario.nome}}
+    <button ion-button  small icon-left (click)="convidarAmigo(usuario.id, usuario.nome)" >
+          <ion-icon name="add-circle" ></ion-icon>
+    </button>
+
+  </h2>
+</div>
+</div>
+
 
 
 </ion-content>

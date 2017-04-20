@@ -14,13 +14,15 @@
 
 
 <ion-content padding>
-  <h3>Amigos</h3>
+  <ion-list>
+    <ion-item class="tamanho-botoes"  *ngFor="let amigo of amigos | async">
+        {{amigo.idAmigo}}
+    </ion-item >
+  </ion-list>
 
-  <h2>Amigo1</h2>
-  <h2>Amigo2</h2>
 
   <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToAdicionarAmigos()"> <ion-icon name="medical"></ion-icon> 
+      <button ion-button color="dark"  large outline (click)="goToAdicionarAmigos()"> <ion-icon name="medical"></ion-icon>
          Adicionar amigos </button>
   </div>
 

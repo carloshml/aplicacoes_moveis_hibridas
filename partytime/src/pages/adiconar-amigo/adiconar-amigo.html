@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>adiconar-amigo</ion-title>
+    <ion-title>Adicionar Amigos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,10 +15,25 @@
 
 <ion-content padding>
   <ion-searchbar
+  placeholder=" Buscar Amigos"
   [(ngModel)]="myInput"
   [showCancelButton]="shouldShowCancel"
-  (ionInput)="onInput($event)"
-  (ionCancel)="onCancel($event)">
+  (ionInput)="search(myInput)"
+  (ionCancel)="onCancel()">
 </ion-searchbar>
+  <div>
+    <div *ngFor="let usuario of usuarios | async" >
+
+      <h2>
+        {{usuario.nome}}
+        <button ion-button  small icon-left (click)="addAmigo(usuario.id)" >
+              <ion-icon name="add-circle" ></ion-icon>
+        </button>
+
+      </h2>
+    </div>
+  </div>
+
+
 
 </ion-content>

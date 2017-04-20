@@ -27,7 +27,7 @@ export class TelaLogin {  loading: Loading;
     private alertCtrl: AlertController,
     public auth: AuthService,
   ){
-    this.usuarios = af.database.list('/usuarios');    
+    this.usuarios = af.database.list('/usuarios');
     /*
     this.usuarios.subscribe(items => {
     // items is an array
@@ -50,13 +50,13 @@ fbLogin(): void {
     .then( data => {
       // Create the user object
 
-      alert(JSON.stringify(data));
+      //alert(JSON.stringify(data));
       this.registerCredentials.userid = data.id;
       this.registerCredentials.nome = data.name;
 
       this.registerCredentials.foto = data.picture.data.url;
       this.auth.login(this.registerCredentials);
-      alert( this.registerCredentials.foto  )
+      //alert( this.registerCredentials.foto  )
       this.goHomeUsuario();/*
 
       this.fb.api("me/picture?fields=url", []).then(foto => {
