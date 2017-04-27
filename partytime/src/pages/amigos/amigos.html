@@ -7,8 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>amigos</ion-title>
-  </ion-navbar>
+    <ion-title>Amigos</ion-title>
+
+  <ion-buttons start>
+    <button ion-button icon-only (click)="goToAdicionarAmigos()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
+ </ion-navbar>
 
 </ion-header>
 
@@ -16,14 +22,11 @@
 <ion-content padding>
   <ion-list>
     <ion-item class="tamanho-botoes"  *ngFor="let amigo of amigos | async">
-        {{amigo.idAmigo}}
+        {{amigo?.idAmigo}}
+        {{amigosUsuario?.nome}}
     </ion-item >
   </ion-list>
 
 
-  <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToAdicionarAmigos()"> <ion-icon name="medical"></ion-icon>
-         Adicionar amigos </button>
-  </div>
 
 </ion-content>

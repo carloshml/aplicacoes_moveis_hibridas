@@ -21,12 +21,15 @@
 
 
 
-  <span class="item item-avatar">
-      <img src="{{foto}}" alt="">
-  </span>
+    <ion-toolbar class="bar-profile">
+      <ion-item no-lines class="item-bar-profile">
+        <ion-avatar>
+          <img style="box-shadow: 5px 5px 5px grey;" class="button centered" src="{{foto}}" >
+        </ion-avatar>
+        <span class="user-title centered" style="text-shadow: 2px 2px 4px #000000; margin-top: 10px" > Bem vindo, {{username}}! </span>
+      </ion-item>
+  </ion-toolbar>
 
-
-  <h3>Bem vindo, {{username}}!</h3>
 
   <div class="row">
     <button ion-button color="dark"  large outline (click)="goToFesta()"  ><ion-icon name="medical"></ion-icon>
@@ -37,10 +40,7 @@
     <button ion-button color="dark"  large outline (click)="goToConvites()"> <ion-icon name="medical"></ion-icon>
       Ver Convites </button>
   </div>
-  <div class="row">
-      <button ion-button color="dark"  large outline (click)="goToConvidar()"> <ion-icon name="medical"></ion-icon>
-        Convidar </button>
-  </div>
+
   <div class="row">
         <button ion-button color="dark"  large outline (click)="goToAmigos()"> <ion-icon name="medical"></ion-icon>
           Ver Amigos </button>

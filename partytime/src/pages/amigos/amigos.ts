@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the Amigos page.
@@ -22,6 +23,8 @@ export class Amigos {
   amigos: FirebaseListObservable<any>;
   usuarios: FirebaseListObservable<any>;
   info ;
+  amigosUsuario: Observable<any[]>;
+  nomeAmigos;
 
   constructor(
     public navCtrl: NavController,
@@ -44,6 +47,16 @@ export class Amigos {
       }
     });
 
+
+
+    /*
+    this.amigosUsuario = this.af.database.list('/amigos')
+      .map(amigos => {
+          amigos.map(p => {
+              p.NomeDoamigo = this.af.database.object('/usuarios/'+p.$key);
+          });
+          return amigos;
+      });
     this.amigos.forEach( data =>     this.usuarios = this.af.database.list('/usuarios',{
           query: {
             orderByChild:'id',
@@ -52,10 +65,23 @@ export class Amigos {
         })
       );
      alert( JSON.stringify(this.usuarios));
+
+    */
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Amigos');
+    this.amigos.forEach(amigo =>  this.amigosUsuario= this.af.database.list('/usuarios',{
+          query: {
+            orderByChild: '$key',
+            equalTo: amigo.keyAmigo,
+          }
+        })
+      );
+
+      alert(this.amigosUsuario);
   }
 
   goToAdicionarAmigos() {

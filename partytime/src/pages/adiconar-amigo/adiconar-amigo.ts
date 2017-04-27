@@ -67,14 +67,13 @@ export class AdiconarAmigo {
     console.log('ionViewDidLoad AdiconarAmigo');
   }
 
-  addAmigo(usuarioId){
+  addAmigo(usuarioId,usuarioKey){
     console.log('add' + usuarioId )
 
     this.amigos.push({
       idUsuario: this.id ,
-      idAmigo: usuarioId
-
-
+      idAmigo: usuarioId,
+      keyAmigo: usuarioKey,
     });
   }
 

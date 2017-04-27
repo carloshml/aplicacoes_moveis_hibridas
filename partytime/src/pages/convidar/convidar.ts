@@ -24,13 +24,14 @@ export class Convidar {
   info;
   nomeItem;
   valorItem;
-  myInput
+  myInput;
+  idFesta;
 
   constructor(public navCtrl: NavController, public navParams: NavParams ,   public af: AngularFire,
     public auth: AuthService,
   ) {
 
-
+    this.idFesta = navParams.get('id');
     this.info = this.auth.getUserInfo();
     this.username = this.info.name;
     this.email = this.info.email;
@@ -67,10 +68,11 @@ export class Convidar {
 
   convidarAmigo(usuarioId){
 
- alert(this.nomeItem+ 'valor item \n'+this.valorItem+'id usuario\n'+  usuarioId + 'logado\n+ '+this.id);
+// alert(this.nomeItem+ 'valor item \n'+this.valorItem+'id usuario\n'+  usuarioId + 'logado\n+ '+this.id);
     this.convites.push({
       condidante: this.id,
       condado : usuarioId,
+      idfesta :this.idFesta,
       nomeItem: this.nomeItem,
       valorItem: this.valorItem,
     });

@@ -1,3 +1,84 @@
 page-home-usuario {
 
+    ion-avatar img {
+      width: 60px !important;
+      height: 60px !important;
+      // border-style: solid;
+      // border-width: 1px;
+    }
+
+    .user-title {
+      color: white;
+      font-size: large;
+      font-weight: bold;
+    }
+    .user-info{
+      color: white;
+      font-size: smaller;
+    }
+    .centered{
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      text-align: center;
+    }
+
+    .header-profile{
+      height: 60px;
+    }
+
+    .bar-profile{
+      height: 140px;
+    }
+
+    .bar-profile .toolbar-background {
+
+      background-size: cover;
+    //  background-image: url('../assets/images/mala3.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: black;
+      opacity: .75;
+    }
+
+    .item-bar-profile{
+      background-color: transparent;
+    }
+    .content-profile{
+      top:200px;
+      background-color: lightgrey;
+    }
+
+
+
+    .card-background-page {
+
+      ion-card {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        //background-image: url('../assets/images/back11.jpg');
+        border-radius: 8%;
+        box-shadow: 5px 5px 5px grey;
+        // background-color: primary;
+      }
+
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 52%;
+        width: 100%;
+        color: #fff;
+  }
+
+}
 }
