@@ -113,7 +113,7 @@ export class Festa {
         {
           text: 'Save',
           handler: data => {
-            console.log(JSON.stringify(data));
+          //  console.log(JSON.stringify(data));
             this.festas.update(festaId, {
               nome: data.nome
             });

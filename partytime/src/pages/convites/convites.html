@@ -1,19 +1,53 @@
 <!--
-  Generated template for the Convites page.
+Generated template for the Convites page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>convites</ion-title>
+    <ion-title>Convites Recebidos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h3>Convites Ativos</h3>
+
+  <ion-grid>
+    <ion-list>
+      <ion-row class=" item " block *ngFor="let convite of convites | async" >
+        <ion-row>
+          <ion-col col-auto >
+            <ion-row block>
+              Festa: {{convite.idfesta}}
+            </ion-row>
+            <ion-row block>
+              Item para levar: {{convite.nomeItem}}
+              {{nomeAmigos?.nome}}
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-row block>
+            Aceita?
+          </ion-row>
+          <ion-row block>
+            <ion-col col-6>
+              <button ion-button block small icon-left (click)="negarFesta(convite.$key)" >
+                <ion-icon name="close"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button block  small icon-left (click)="aceitarFesta(convite.$key)" >
+                <ion-icon name="checkmark"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-row>
+    </ion-list>
+  </ion-grid>
 
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
 
@@ -29,6 +29,7 @@ export class Convidar {
 
   constructor(public navCtrl: NavController, public navParams: NavParams ,   public af: AngularFire,
     public auth: AuthService,
+    private alertCtrl: AlertController,
   ) {
 
     this.idFesta = navParams.get('id');
@@ -66,16 +67,34 @@ export class Convidar {
 
   }
 
-  convidarAmigo(usuarioId){
+  convidarAmigo(usuarioId:string){
 
 // alert(this.nomeItem+ 'valor item \n'+this.valorItem+'id usuario\n'+  usuarioId + 'logado\n+ '+this.id);
+// objeto anom
+  var a = {}
+  a[this.idFesta] = true;
+
+  var idFest = this.idFesta;
     this.convites.push({
-      condidante: this.id,
-      condado : usuarioId,
-      idfesta :this.idFesta,
+      convidante: this.id,
+      convidado : usuarioId.toString() ,
+      idfesta : {
+        idFest:true,
+      },
       nomeItem: this.nomeItem,
       valorItem: this.valorItem,
+      isaceito: false,
     });
+
+
+
+
+    let alert = this.alertCtrl.create({
+    title: 'Festa',
+    subTitle: 'convite enviado',
+    buttons: ['OK']
+  });
+  alert.present();
 
   }
 

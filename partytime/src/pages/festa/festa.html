@@ -24,7 +24,7 @@
 
 
   <ion-list>
-    <button class="tamanho-botoes"  ion-button tamanho-botoes icon-only large *ngFor="let festa of festas | async" (click)="showOptions(festa.$key, festa.nome)"  >
+      <button ion-button class="tamanho-botoes" color="dark" outline large *ngFor="let festa of festas | async" (click)="showOptions(festa.$key, festa.nome)"  >
         {{festa.nome}}
     </button>
 
