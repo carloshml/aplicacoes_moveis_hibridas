@@ -20,6 +20,7 @@ import {Convidar} from '../convidar/convidar'
 export class Festa {
   festas: FirebaseListObservable<any>;
   selectedFesta;
+  key = '';
   username = '';
   email = '';
   id='';
@@ -39,11 +40,12 @@ export class Festa {
     this.username = info.name;
     this.email = info.email;
     this.id = info.id;
+    this.key= info.key;
 
     this.festas = af.database.list('/festas',{
       query: {
         orderByChild: 'dono',
-        equalTo: this.id,
+        equalTo: this.key,
       }
     });
   }
@@ -173,7 +175,7 @@ export class Festa {
               data: data.data,
               local: data.local,
               tema: data.tema,
-              dono: this.id,
+              dono: this.key,
               nomeDoDonoDaFesta:this.username,
               buget: data.buget
             });

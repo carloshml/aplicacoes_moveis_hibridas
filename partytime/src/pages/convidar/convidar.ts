@@ -19,6 +19,7 @@ export class Convidar {
   email = '';
   id='';
   foto = '';
+  key ='';
   usuarios: FirebaseListObservable<any>;
   convites: FirebaseListObservable<any>;
   info;
@@ -38,6 +39,7 @@ export class Convidar {
     this.email = this.info.email;
     this.id = this.info.id ;
     this.foto = this.info.foto;
+    this.key = this.info.key;
     this.convites = af.database.list('/convites');
     // para o place holder funcionar
     this.myInput='';
@@ -76,11 +78,9 @@ export class Convidar {
 
   var idFest = this.idFesta;
     this.convites.push({
-      convidante: this.id,
+      convidante: this.key,
       convidado : usuarioId.toString() ,
-      idfesta : {
-        idFest:true,
-      },
+      idfesta : idFest,
       nomeItem: this.nomeItem,
       valorItem: this.valorItem,
       isaceito: false,

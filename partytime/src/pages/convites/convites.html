@@ -1,9 +1,3 @@
-<!--
-Generated template for the Convites page.
-
-See http://ionicframework.com/docs/components/#navigation for more info on
-Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -15,17 +9,20 @@ Ionic pages and navigation.
 
 <ion-content padding>
 
-  <ion-grid>
+<!--  <ion-grid>
     <ion-list>
       <ion-row class=" item " block *ngFor="let convite of convites | async" >
         <ion-row>
           <ion-col col-auto >
             <ion-row block>
-              Festa: {{convite.idfesta}}
+              Festa: {{convite?.idfesta}} <br/>
+              festa {{festa34?.nome}} <br>
             </ion-row>
             <ion-row block>
-              Item para levar: {{convite.nomeItem}}
-              {{nomeAmigos?.nome}}
+              Item para levar: {{convite?.nomeItem}} <br>
+              Valor item {{convite?.valorItem}}
+
+
             </ion-row>
           </ion-col>
         </ion-row>
@@ -47,7 +44,31 @@ Ionic pages and navigation.
           </ion-row>
         </ion-row>
       </ion-row>
+      <ion-row class=" item " block *ngFor="let festa of festas | async" >
+        {{festas?.nome}}
+      </ion-row>
+
     </ion-list>
   </ion-grid>
+-->
+
+  <ion-row  ion-item *ngFor="let item of convitesRealizados" >
+  Festa :  {{item.festa}} <br>
+  Item : {{item.item}} <br>
+  Valor {{item.valorItem}} <br>
+  Você foi convidado por {{item.convidante}} <br>
+  <br>
+  <h3>Aceita o convite ?</h3><br>
+
+    <button ion-button block small icon-left (click)="negarFesta(item.idConvite)" >
+      <ion-icon name="close"></ion-icon>
+    </button>
+
+    <button ion-button block  small icon-left (click)="aceitarFesta(item.idConvite)" >
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+
+
+  </ion-row >
 
 </ion-content>

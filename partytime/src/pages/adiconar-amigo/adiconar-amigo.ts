@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
 
@@ -21,6 +21,7 @@ export class AdiconarAmigo {
   email = '';
   id='';
   foto = '';
+  key = '';
   myInput;
   info ;
 
@@ -28,6 +29,7 @@ export class AdiconarAmigo {
     public navParams: NavParams,
     public af: AngularFire,
     public auth: AuthService,
+    public alertCtrl: AlertController,
   ) {
 
 
@@ -36,13 +38,9 @@ export class AdiconarAmigo {
     this.email = this.info.email;
     this.id = this.info.id ;
     this.foto = this.info.foto;
+    this.key = this.info.key;
 
-    this.amigos = af.database.list('/amigos',{
-      query: {
-        orderByChild: 'id',
-        equalTo: this.id,
-      }
-    });
+    this.amigos = af.database.list('/amigos');
     // para o place holder funcionar
     this.myInput='';
 
@@ -67,14 +65,18 @@ export class AdiconarAmigo {
     console.log('ionViewDidLoad AdiconarAmigo');
   }
 
-  addAmigo(usuarioId,usuarioKey){
-    console.log('add' + usuarioId )
+  addAmigo(usuarioKey){
 
     this.amigos.push({
-      idUsuario: this.id ,
-      idAmigo: usuarioId,
+      keyUsuario: this.key,
       keyAmigo: usuarioKey,
     });
+    let alert = this.alertCtrl.create({
+      title: 'Pronto!',
+      subTitle: 'Amigo Adicionado',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   onCancel(){

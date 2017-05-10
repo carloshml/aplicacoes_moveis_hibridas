@@ -14,7 +14,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
   templateUrl: 'tela-login.html'
 })
 export class TelaLogin {  loading: Loading;
-  registerCredentials = {email: '',userid:'',nome:'', foto:''};
+  registerCredentials = {email: '',userid:'',nome:'', foto:'', key:''};
   FB_APP_ID: number = 1862402434040217;
   usuarios: FirebaseListObservable<any>;
   loginTrue=0 ;

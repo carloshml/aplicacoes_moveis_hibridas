@@ -14,17 +14,14 @@ import {AngularFire, FirebaseListObservable,firebaseAuthConfig } from 'angularfi
   templateUrl: 'home-usuario.html',
 })
 
-
-
 export class HomeUsuario {
 
-  username = '';
-  email = '';
-  id='';
-  foto = '';
+
+  registerCredentials = {email: '',userid:'',nome:'', foto:'', key:''};
   usuarios: FirebaseListObservable<any>;
-   info ;
-   usuarioExistente=0;
+  usuario: FirebaseListObservable<any>;
+  info ;
+  usuarioExistente=0;
 
 
   constructor(
@@ -36,46 +33,58 @@ export class HomeUsuario {
 
 
     this.info = this.auth.getUserInfo();
-    this.username = this.info.name;
-    this.email = this.info.email;
-    this.id = this.info.id ;
-    this.foto = this.info.foto;
-
-
-
+    this.registerCredentials.nome = this.info.name;
+    this.registerCredentials.email = this.info.email;
+    this.registerCredentials.userid = this.info.id ;
+    this.registerCredentials.foto = this.info.foto;
     this.usuarios = this.af.database.list('/usuarios');
 
+
+    this.usuario =  this.af.database.list('/usuarios', {
+      query: {
+        orderByChild: 'id',
+        equalTo: this.registerCredentials.userid ,
+      }
+    });
+
+
+    this.usuario.forEach(next=>{
+      this.registerCredentials.userid = next[0].id;
+      this.registerCredentials.nome = next[0].nome;
+      this.registerCredentials.foto = next[0].foto;
+      this.registerCredentials.key = next[0].$key ;
+      this.auth.login(this.registerCredentials);
+    });
+      
+      this.usuarios =  this.af.database.list('/usuarios');
 
   }
 
 
   ionViewDidLoad() {
-
     this.af.database.list('/usuarios', {
-    query: {
-    orderByChild: 'id',
-    equalTo: this.info.id ,
-  }
-}).subscribe(snapshot => { this.usuarioExistente = snapshot.length;
-                            if(this.usuarioExistente){
-                            //  alert('já existe');
-                            }else{
-                              this.usuarios.push({
-                                nome: this.username,
-                                id: this.id,
-                                foto: this.foto,
-                              });
-                            }
-});
-
-
+      query: {
+        orderByChild: 'id',
+        equalTo: this.registerCredentials.userid ,
+      }
+    }).subscribe(snapshot => { this.usuarioExistente = snapshot.length;
+      if(this.usuarioExistente){
+        //  alert('já existe');
+      }else{
+        this.usuarios.push({
+          nome: this.registerCredentials.nome,
+          id: this.registerCredentials.userid,
+          foto: this.registerCredentials.foto,
+        });
+      }
+    });
 
     console.log('ionViewDidLoad HomeUsuario');
   }
 
   mostrarUsuario(){
 
-    alert(' Usuario id ' + this.email +'  '+this.id  );
+
   }
 
   goToFesta() {

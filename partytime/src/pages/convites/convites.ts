@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable } from 'angularfire2';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
 import { Observable } from 'rxjs/Observable';
+import {ConviteRealizado} from './conviterealizado'
 
 /**
 * Generated class for the Convites page.
@@ -15,15 +16,19 @@ import { Observable } from 'rxjs/Observable';
   selector: 'page-convites',
   templateUrl: 'convites.html',
 })
+
+
 export class Convites {
 
   convites: FirebaseListObservable<any>;
-  usuario: FirebaseListObservable<any>;
-  festa: FirebaseListObservable<any>;
-  nomeAmigos: Observable<any[]>;
+  convites1: Observable<any[]>;
   username = '';
   email = '';
   id='';
+  key='';
+  conviteRealizado : ConviteRealizado = new ConviteRealizado();
+  convitesRealizados: Array<ConviteRealizado> = new Array<ConviteRealizado>();
+  //convitesRealizados =[];
 
   constructor(
     public af: AngularFire,
@@ -38,55 +43,72 @@ export class Convites {
     this.username = info.name;
     this.email = info.email;
     this.id = info.id;
+    this.key = info.key;
+
 
     this.convites = af.database.list('/convites',{
       query: {
         orderByChild: 'convidado',
-        equalTo: this.id,
+        equalTo: this.key,
       }
     });
 
+    this.convites.subscribe( convites=>{
+      convites.map( convite =>{
+        this.convitesRealizados = new Array<ConviteRealizado>();;
+        this.af.database.object('/festas/'+convite.idfesta).subscribe(snapshot => {
+          this.af.database.object('/usuarios/'+convite.convidante).subscribe(snapshot2 => {
+            this.conviteRealizado = new ConviteRealizado();
+            this.conviteRealizado.festa = snapshot.nome;
+            this.conviteRealizado.convidante = snapshot2.nome;
+            this.conviteRealizado.item = convite.nomeItem;
+            this.conviteRealizado.valorItem = convite.valorItem;
+            this.conviteRealizado.idConvite = convite.$key;
+            this.convitesRealizados.push(this.conviteRealizado);
+          });
+        });
+      });
+      return convites;
+    });
+
+    // = af.database.list('/festas/'+convite.idfesta)
+    // var festa; loop over convites this.convites.subscribe( );
     /*
     criar um observable depois fazer um for each dentro depois criar um tipo que
     contenha todas as coisas e usar esse tipo pra mostrar na view
     */
 
-  //  this.convites.forEach( snap => {  snap.idFesta = af.database.list('/festas/'+ snap.idFesta ); });
+  }
+
+  ionViewDidLoad() {
+
+    console.log('ionViewDidLoad Convites');
+  }
 
 
+  negarFesta(conviteId){
+    this.convites.update(conviteId, {
+      isaceito: false,
+    });
+    let alert = this.alertCtrl.create({
+      title: 'Convite',
+      subTitle: 'Você recusou o convite',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  aceitarFesta(conviteId){
 
+    this.convites.update(conviteId, {
+      isaceito: true,
+    });
+    let alert = this.alertCtrl.create({
+      title: 'Convite',
+      subTitle: 'Você aceitou o convite',
+      buttons: ['OK']
+    });
+    alert.present();
 
-}
-
-ionViewDidLoad() {
-  console.log('ionViewDidLoad Convites');
-  // alert(JSON.stringify(this.nomeAmigos) );
-}
-
-
-negarFesta(conviteId){
-  this.convites.update(conviteId, {
-    isaceito: false,
-  });
-  let alert = this.alertCtrl.create({
-    title: 'Festa',
-    subTitle: 'Você recusou o convite',
-    buttons: ['OK']
-  });
-  alert.present();
-}
-aceitarFesta(conviteId){
-
-  this.convites.update(conviteId, {
-    isaceito: true,
-  });
-  let alert = this.alertCtrl.create({
-    title: 'Festa',
-    subTitle: 'Você aceitou',
-    buttons: ['OK']
-  });
-  alert.present();
-
-}
+  }
 
 }
