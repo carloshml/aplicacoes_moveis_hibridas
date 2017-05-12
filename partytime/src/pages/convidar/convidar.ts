@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
+import { Usuario } from '../amigos/./usuario'
 
 /**
 * Generated class for the Convidar page.
@@ -20,8 +21,10 @@ export class Convidar {
   id='';
   foto = '';
   key ='';
-  usuarios: FirebaseListObservable<any>;
+  amigos: FirebaseListObservable<any>;
   convites: FirebaseListObservable<any>;
+  amigo : Usuario = new Usuario();
+  usuarios: Array<Usuario> = new Array<Usuario>();
   info;
   nomeItem;
   valorItem:string;
@@ -55,17 +58,30 @@ export class Convidar {
   }
 
   search(term:string){
-    console.log(term);
 
-    this.usuarios = this.af.database.list('/usuarios',{
+
+
+
+    this.amigos = this.af.database.list('/amigos',{
       query: {
-        orderByChild:'nome',
-        startAt: term ,
-        limitToLast: 6,
+        orderByChild: 'keyUsuario',
+        equalTo: this.key,
       }
-
     });
-    console.log(this.usuarios);
+
+    this.amigos.subscribe( amigos=>{
+      amigos.map( amigo =>{
+        this.af.database.object('/usuarios/'+amigo.keyAmigo).subscribe(snapshot => {
+          this.amigo = new Usuario();
+          this.amigo.nome= snapshot.nome;
+          this.amigo.foto = snapshot.foto;
+          this.amigo.key = snapshot.$key;
+          this.usuarios.push(this.amigo);
+        });
+      });
+    });
+
+
 
   }
 

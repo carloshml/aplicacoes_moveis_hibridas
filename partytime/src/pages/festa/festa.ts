@@ -19,6 +19,7 @@ import {Convidar} from '../convidar/convidar'
 })
 export class Festa {
   festas: FirebaseListObservable<any>;
+  convites : FirebaseListObservable<any>;
   selectedFesta;
   key = '';
   username = '';
@@ -140,7 +141,20 @@ export class Festa {
   }
 
   removeFesta(festaId: string){
+
+
+    this.convites = this.af.database.list('/convites',{
+      query: {
+        orderByChild: 'idfesta',
+        equalTo: festaId,
+      }
+    });
     this.festas.remove(festaId);
+    this.convites.subscribe( convites=>{
+      convites.map(convite =>{
+        this.convites.remove(convite.$key);
+      });
+    });
   }
 
   addFesta(){
