@@ -1,12 +1,15 @@
+$img-placeholder-background: 	#e111ee ;
+
 page-tela-login {
-  ion-content{
-     background-image: url("../../assets/img/baloes.png");
-  }
+
+
+
 
   .img-logo-tamanho{
-    width: 250px;
-    height: 250px;
-    padding-left: 40px;
+      height: 240px;
+      width: auto;
+      margin: auto;
+      display: block;
   }
    .login-content {
 
@@ -39,8 +42,8 @@ page-tela-login {
       }
 
       .submit-btn {
-        background: #51CFB1;
-        border-radius: 20px !important;
+        background: #3b5998;
+        border-radius: 10px !important;
         border: 1px solid #ffffff;
         font-size: 0.9em;
         height: 30px;
