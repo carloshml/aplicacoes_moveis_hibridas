@@ -24,6 +24,7 @@ export class Festa {
   username = '';
   email = '';
   id='';
+  temFesta:boolean = true;
 
 
   constructor( public alertCtrl:AlertController,
@@ -48,9 +49,21 @@ export class Festa {
         equalTo: this.key,
       }
     });
+    this.festas.subscribe( festas => {
+          if (festas.length>0){
+            this.temFesta = true;
+          }else{
+            this.temFesta = false;
+          }
+      });
+
+
+
+
   }
 
   ionViewDidLoad() {
+
     console.log('ionViewDidLoad Festa');
   }
 
@@ -152,10 +165,6 @@ export class Festa {
           placeholder: 'tema'
         },
         {
-          name: 'dono',
-          placeholder: 'dono'
-        },
-        {
           name: 'buget',
           placeholder: 'valor'
         },
@@ -176,7 +185,6 @@ export class Festa {
               local: data.local,
               tema: data.tema,
               dono: this.key,
-              nomeDoDonoDaFesta:this.username,
               buget: data.buget
             });
           }

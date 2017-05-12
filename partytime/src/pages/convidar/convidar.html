@@ -12,12 +12,12 @@
 
   <h3>ITEM</h3>
   <ion-item>
-    <ion-label color="primary" floating>Nome do Item</ion-label>
-    <ion-input  [(ngModel)]="nomeItem"></ion-input>
+    <ion-label color="primary"   floating>Nome do Item</ion-label>
+    <ion-input required  [(ngModel)]="nomeItem"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label color="primary" floating>Valor do Item</ion-label>
-    <ion-input type="number" [(ngModel)]="valorItem"></ion-input>
+    <ion-input  required type="number" [(ngModel)]="valorItem"></ion-input>
   </ion-item>
 
   <h4>Quem leva?</h4>
@@ -31,11 +31,12 @@
 
 <ion-list>
   <ion-item *ngFor="let usuario of usuarios | async">
+    <ion-avatar item-left>
+      <img src="{{usuario?.foto}}">
+    </ion-avatar>
     <h2>  {{usuario.nome}}</h2>
     <button ion-button large item-right (click)="convidarAmigo(usuario.$key, usuario.nome)" ><ion-icon name="add-circle" ></ion-icon></button>
   </ion-item>
 </ion-list>
-
-
 
 </ion-content>

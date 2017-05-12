@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage,AlertController,Loading, NavController } from 'ionic-angular';
 import { CriarNovaConta } from '../criar-nova-conta/criar-nova-conta';
 import { HomeUsuario } from '../home-usuario/home-usuario';
-
-import {AngularFire, FirebaseListObservable,firebaseAuthConfig } from 'angularfire2';
+import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
-
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @IonicPage()

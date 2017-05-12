@@ -16,13 +16,19 @@
 
 <ion-content padding>
 
-
+<div class="" *ngIf="temFesta; else naoTemFesta ">
   <ion-list>
-      <button ion-button class="tamanho-botoes" color="dark" outline large *ngFor="let festa of festas | async" (click)="showOptions(festa.$key, festa.nome)"  >
+    <button ion-button class="tamanho-botoes" color="dark" outline large *ngFor="let festa of festas | async" (click)="showOptions(festa.$key, festa.nome)"  >
         {{festa.nome}}
     </button>
-
   </ion-list>
+</div>
+
+<ng-template #naoTemFesta>
+<h3>Você ainda não criou uma festa</h3>
+</ng-template>
+
+
 
 
 

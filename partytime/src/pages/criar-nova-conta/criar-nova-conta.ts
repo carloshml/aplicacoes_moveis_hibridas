@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
-import {TelaLogin} from '.././tela-login/tela-login'
 /**
 * Generated class for the CriarNovaConta page.
 *

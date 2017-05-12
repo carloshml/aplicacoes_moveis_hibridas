@@ -9,66 +9,160 @@
 
 <ion-content padding>
 
+  <!--  <ion-grid>
+  <ion-list>
+  <ion-row class=" item " block *ngFor="let convite of convites | async" >
+  <ion-row>
+  <ion-col col-auto >
+  <ion-row block>
+  Festa: {{convite?.idfesta}} <br/>
+  festa {{festa34?.nome}} <br>
+</ion-row>
+<ion-row block>
+Item para levar: {{convite?.nomeItem}} <br>
+Valor item {{convite?.valorItem}}
+
+
+</ion-row>
+</ion-col>
+</ion-row>
+<ion-row>
+<ion-row block>
+Aceita?
+</ion-row>
+<ion-row block>
+<ion-col col-6>
+<button ion-button block small icon-left (click)="negarFesta(convite.$key)" >
+<ion-icon name="close"></ion-icon>
+</button>
+</ion-col>
+<ion-col col-6>
+<button ion-button block  small icon-left (click)="aceitarFesta(convite.$key)" >
+<ion-icon name="checkmark"></ion-icon>
+</button>
+</ion-col>
+</ion-row>
+</ion-row>
+</ion-row>
+<ion-row class=" item " block *ngFor="let festa of festas | async" >
+{{festas?.nome}}
+</ion-row>
+
+</ion-list>
+</ion-grid>
+<ion-header>
+
+<ion-navbar>
+<ion-title>Convites Recebidos</ion-title>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
 <!--  <ion-grid>
-    <ion-list>
-      <ion-row class=" item " block *ngFor="let convite of convites | async" >
-        <ion-row>
-          <ion-col col-auto >
-            <ion-row block>
-              Festa: {{convite?.idfesta}} <br/>
-              festa {{festa34?.nome}} <br>
-            </ion-row>
-            <ion-row block>
-              Item para levar: {{convite?.nomeItem}} <br>
-              Valor item {{convite?.valorItem}}
+<ion-list>
+<ion-row class=" item " block *ngFor="let convite of convites | async" >
+<ion-row>
+<ion-col col-auto >
+<ion-row block>
+Festa: {{convite?.idfesta}} <br/>
+festa {{festa34?.nome}} <br>
+</ion-row>
+<ion-row block>
+Item para levar: {{convite?.nomeItem}} <br>
+Valor item {{convite?.valorItem}}
 
 
-            </ion-row>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-row block>
-            Aceita?
-          </ion-row>
-          <ion-row block>
-            <ion-col col-6>
-              <button ion-button block small icon-left (click)="negarFesta(convite.$key)" >
-                <ion-icon name="close"></ion-icon>
-              </button>
-            </ion-col>
-            <ion-col col-6>
-              <button ion-button block  small icon-left (click)="aceitarFesta(convite.$key)" >
-                <ion-icon name="checkmark"></ion-icon>
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-row>
-      </ion-row>
-      <ion-row class=" item " block *ngFor="let festa of festas | async" >
-        {{festas?.nome}}
-      </ion-row>
+</ion-row>
+</ion-col>
+</ion-row>
+<ion-row>
+<ion-row block>
+Aceita?
+</ion-row>
+<ion-row block>
+<ion-col col-6>
+<button ion-button block small icon-left (click)="negarFesta(convite.$key)" >
+<ion-icon name="close"></ion-icon>
+</button>
+</ion-col>
+<ion-col col-6>
+<button ion-button block  small icon-left (click)="aceitarFesta(convite.$key)" >
+<ion-icon name="checkmark"></ion-icon>
+</button>
+</ion-col>
+</ion-row>
+</ion-row>
+</ion-row>
+<ion-row class=" item " block *ngFor="let festa of festas | async" >
+{{festas?.nome}}
+</ion-row>
 
-    </ion-list>
-  </ion-grid>
+</ion-list>
+</ion-grid>
+
+
+<ion-item-sliding *ngFor="let item of convitesRealizados" >
+Festa :  {{item.festa}} <br>
+Item : {{item.item}} <br>
+Valor {{item.valorItem}} <br>
+Você foi convidado por {{item.convidante}} <br>
+<br>
+<h3>Aceita o convite ?</h3><br>
+
+<ion-item-options side="right">
+<button ion-button color="danger" (click)="negarFesta(item.idConvite)" >
+<ion-icon name="close"></ion-icon>
+</button>
+<button ion-button  (click)="aceitarFesta(item.idConvite)" >
+<ion-icon name="checkmark"></ion-icon>
+</button>
+</ion-item-options>
+</ion-item-sliding>
+
+</ion-content>
+<ion-list >
+<ion-item  *ngFor="let item of convitesRealizados" class="button" >
+Festa :  {{item?.festa}} <br>
+Item : {{item?.item}} <br>
+Valor {{item?.valorItem}} <br>
+Você foi convidado por {{item?.convidante}} <br>
+<br>
+<h3>Aceita o convite ?</h3><br>
+
+<button ion-button block small icon-left (click)="negarFesta(item.idConvite)" >
+<ion-icon name="close"></ion-icon>
+</button>
+
+<button ion-button block  small icon-left (click)="aceitarFesta(item.idConvite)" >
+<ion-icon name="checkmark"></ion-icon>
+</button>
+</ion-item>
+</ion-list >
 -->
 
-  <ion-row  ion-item *ngFor="let item of convitesRealizados" >
-  Festa :  {{item.festa}} <br>
-  Item : {{item.item}} <br>
-  Valor {{item.valorItem}} <br>
-  Você foi convidado por {{item.convidante}} <br>
-  <br>
-  <h3>Aceita o convite ?</h3><br>
-
-    <button ion-button block small icon-left (click)="negarFesta(item.idConvite)" >
-      <ion-icon name="close"></ion-icon>
-    </button>
-
-    <button ion-button block  small icon-left (click)="aceitarFesta(item.idConvite)" >
-      <ion-icon name="checkmark"></ion-icon>
-    </button>
 
 
-  </ion-row >
+
+<ion-list>
+  <ion-item-sliding *ngFor="let item of convitesRealizados">
+    <ion-item>
+      <p>Festa :  {{item.festa}}</p>
+      <p>Item : {{item.item}} </p>
+      <p> Valor {{item.valorItem}} </p>
+      <p> Você foi convidado por {{item.convidante}} </p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button  (click)="aceitarFesta(item.idConvite)" >
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+      <button ion-button color="danger"   (click)="negarFesta(item.idConvite)" >
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
 
 </ion-content>

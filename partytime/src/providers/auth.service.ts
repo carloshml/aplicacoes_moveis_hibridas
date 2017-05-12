@@ -1,4 +1,3 @@
-import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 

@@ -7,7 +7,7 @@ import {Amigos} from '../amigos/amigos'
 import {Convites} from '../convites/convites'
 import { AuthService } from '../../providers/auth.service';
 import { Facebook } from '@ionic-native/facebook';
-import {AngularFire, FirebaseListObservable,firebaseAuthConfig } from 'angularfire2';
+import {AngularFire, FirebaseListObservable } from 'angularfire2';
 @IonicPage()
 @Component({
   selector: 'page-home-usuario',
@@ -31,13 +31,13 @@ export class HomeUsuario {
     public af: AngularFire,
   ) {
 
-
     this.info = this.auth.getUserInfo();
     this.registerCredentials.nome = this.info.name;
     this.registerCredentials.email = this.info.email;
     this.registerCredentials.userid = this.info.id ;
     this.registerCredentials.foto = this.info.foto;
     this.usuarios = this.af.database.list('/usuarios');
+
 
 
     this.usuario =  this.af.database.list('/usuarios', {
@@ -55,7 +55,7 @@ export class HomeUsuario {
       this.registerCredentials.key = next[0].$key ;
       this.auth.login(this.registerCredentials);
     });
-      
+
       this.usuarios =  this.af.database.list('/usuarios');
 
   }

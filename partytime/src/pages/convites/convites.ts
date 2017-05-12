@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
-import { Observable } from 'rxjs/Observable';
 import {ConviteRealizado} from './conviterealizado'
 
 /**
@@ -21,7 +20,6 @@ import {ConviteRealizado} from './conviterealizado'
 export class Convites {
 
   convites: FirebaseListObservable<any>;
-  convites1: Observable<any[]>;
   username = '';
   email = '';
   id='';

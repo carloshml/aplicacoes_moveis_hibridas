@@ -24,7 +24,7 @@ export class Convidar {
   convites: FirebaseListObservable<any>;
   info;
   nomeItem;
-  valorItem;
+  valorItem:string;
   myInput;
   idFesta;
 
@@ -71,31 +71,37 @@ export class Convidar {
 
   convidarAmigo(usuarioId:string){
 
-// alert(this.nomeItem+ 'valor item \n'+this.valorItem+'id usuario\n'+  usuarioId + 'logado\n+ '+this.id);
-// objeto anom
-  var a = {}
-  a[this.idFesta] = true;
+    // alert(this.nomeItem+ 'valor item \n'+this.valorItem+'id usuario\n'+  usuarioId + 'logado\n+ '+this.id);
+    // objeto anom
+    var a = {}
+    a[this.idFesta] = true;
 
-  var idFest = this.idFesta;
-    this.convites.push({
-      convidante: this.key,
-      convidado : usuarioId.toString() ,
-      idfesta : idFest,
-      nomeItem: this.nomeItem,
-      valorItem: this.valorItem,
-      isaceito: false,
-    });
-
-
-
-
-    let alert = this.alertCtrl.create({
-    title: 'Festa',
-    subTitle: 'convite enviado',
-    buttons: ['OK']
-  });
-  alert.present();
-
+    if (this.valorItem.length>0){
+      this.convites.push({
+        convidante: this.key,
+        convidado : usuarioId.toString() ,
+        idfesta : this.idFesta,
+        nomeItem: this.nomeItem,
+        valorItem: this.valorItem,
+        isaceito: false,
+      });
+      let alert = this.alertCtrl.create({
+        title: 'Festa',
+        subTitle: 'convite enviado',
+        buttons: ['OK']
+      });
+      alert.present();
+    }else {
+      let alerta = this.alertCtrl.create({
+        title: 'Atenção',
+        subTitle: 'Escreva um valor Numerico',
+        buttons: ['OK']
+      });
+      alerta.present();
+    }
   }
+
+
+
 
 }
