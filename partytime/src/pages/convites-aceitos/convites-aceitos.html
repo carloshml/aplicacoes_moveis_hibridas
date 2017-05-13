@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Convites Aceitos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h2>{{nome}}</h2>
+  <p>  Convites:</p>
+  <ion-list>
+    <div class="" *ngFor="let amigo of amigos">
+      <ion-item class="cor-verde" *ngIf="amigo.isaceito; else naoAceitouConvite">
+        <ion-row>
+          <ion-col>
+            <ion-avatar item-left>
+              <img src="{{amigo?.foto}}">
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-8>
+            <p> {{amigo.nome}}</p>
+            <p> aceitou</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </div>
+
+    <ng-template #naoAceitouConvite>
+      <ion-item class="cor-azul">
+        <ion-row>
+          <ion-col>
+            <ion-avatar item-left>
+              <img src="{{amigo?.foto}}">
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-8>
+            <p> {{amigo.nome}}</p>
+            <p> ainda não aceitou</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ng-template>
+  </ion-list>
+
+
+
+
+</ion-content>
+
+<!--
+
+
+-->
