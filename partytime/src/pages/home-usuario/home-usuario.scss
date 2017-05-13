@@ -6,6 +6,28 @@ page-home-usuario {
       // border-style: solid;
       // border-width: 1px;
     }
+    h4{
+      color: white;
+      //text-shadow: 3px 2px black;
+      font-size: 15px;
+      text-shadow: 1px 1px 6px black;
+    }
+    .tamanho-botao{
+      width: 150px ;
+      height: 150px ;
+      margin: 9px;
+      border: none;
+    }
+    .cor-amarelo{
+      background-color: #fff677;
+    }
+    .cor-verde{
+      background-color: #77ff83;
+    }
+
+    .cor-vermelho{
+      background-color: #ff5663;
+    }
 
     .user-title {
       color: white;
@@ -40,6 +62,7 @@ page-home-usuario {
       opacity: .75;
     }
 
+
     .item-bar-profile{
       background-color: transparent;
     }
@@ -51,33 +74,29 @@ page-home-usuario {
 
 
     .card-background-page {
+          ion-card {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            border-radius: 8%;
+            box-shadow: 5px 5px 5px grey;
+          }
 
-      ion-card {
-        position: relative;
-        text-align: center;
-        width: 100%;
-        //background-image: url('../assets/images/back11.jpg');
-        border-radius: 8%;
-        box-shadow: 5px 5px 5px grey;
-        // background-color: primary;
-      }
+          .card-title {
+            position: absolute;
+            top: 36%;
+            font-size: 2.0em;
+            width: 100%;
+            font-weight: bold;
+            color: #fff;
+          }
 
-      .card-title {
-        position: absolute;
-        top: 36%;
-        font-size: 2.0em;
-        width: 100%;
-        font-weight: bold;
-        color: #fff;
-      }
-
-      .card-subtitle {
-        font-size: 1.0em;
-        position: absolute;
-        top: 52%;
-        width: 100%;
-        color: #fff;
-  }
-
-}
+          .card-subtitle {
+            font-size: 1.0em;
+            position: absolute;
+            top: 52%;
+            width: 100%;
+            color: #fff;
+           }
+    }
 }

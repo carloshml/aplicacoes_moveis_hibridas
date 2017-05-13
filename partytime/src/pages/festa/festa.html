@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -7,32 +6,28 @@
     <ion-title>Festas</ion-title>
     <ion-buttons start>
       <button ion-button icon-only (click)="addFesta()">
-          <ion-icon name="add"></ion-icon>
+        <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
+  <div *ngIf="temFesta; else naoTemFesta " >
+    <ion-card *ngFor="let festa of festas | async">
+      <ion-card-header class="cor-fundo">
+        <h4>{{festa.nome}}</h4>
+      </ion-card-header>
+      <ion-list class="tamanho">
+        <button ion-item  outline  (click)="showOptions(festa.$key, festa.nome)"  >
+          <span class="letra-axis">opções</span>
+        </button>
+      </ion-list>
+    </ion-card>
+  </div>
 
-<div class="" *ngIf="temFesta; else naoTemFesta ">
-  <ion-list>
-    <button ion-button class="tamanho-botoes" color="dark" outline large *ngFor="let festa of festas | async" (click)="showOptions(festa.$key, festa.nome)"  >
-        {{festa.nome}}
-    </button>
-  </ion-list>
-</div>
-
-<ng-template #naoTemFesta>
-<h3>Você ainda não criou uma festa</h3>
-</ng-template>
-
-
-
-
-
-
-
+  <ng-template #naoTemFesta>
+    <h3>Você ainda não criou uma festa</h3>
+  </ng-template>
 
 </ion-content>

@@ -1,7 +1,22 @@
 page-festa {
 
-  .tamanho-botoes{
-    width: 100%;
+  .cor-fundo{
+    background-color: #ff683f;
   }
+
+  ion-content{
+    background-color: #ffc1ac;
+  }
+  .tamanho{
+    height: 40px !important;
+  }
+  h4{
+    font-size: 20px;
+  }
+
+  .letra-axis{
+      font-family: "axis";
+      font-size: 12px;
+    }
 
 }

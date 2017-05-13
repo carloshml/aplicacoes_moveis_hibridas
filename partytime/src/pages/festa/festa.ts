@@ -3,15 +3,10 @@ import { IonicPage, NavController, NavParams, AlertController,     ActionSheetCo
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
 import {Convidar} from '../convidar/convidar'
+import {ConvitesAceitos} from '../convites-aceitos/convites-aceitos'
+import { AdicionarFesta } from '../adicionar-festa/adicionar-festa';
 
 
-
-/**
-* Generated class for the Festa page.
-*
-* See http://ionicframework.com/docs/components/#navigation for more info
-* on Ionic pages and navigation.
-*/
 @IonicPage()
 @Component({
   selector: 'page-festa',
@@ -38,11 +33,13 @@ export class Festa {
   ) {
 
 
+
     let info = this.auth.getUserInfo();
     this.username = info.name;
     this.email = info.email;
     this.id = info.id;
     this.key= info.key;
+
 
     this.festas = af.database.list('/festas',{
       query: {
@@ -92,6 +89,14 @@ export class Festa {
             })
           }
         },{
+          text: 'Ver Convites Aceitos',
+          handler: () => {
+            this.navCtrl.push(ConvitesAceitos, {
+              id: festaId,
+              nome:festaNome
+            })
+          }
+        },{
           text: 'Atualizar o nome',
           handler: () => {
             this.updateFesta(festaId, festaNome);
@@ -106,6 +111,11 @@ export class Festa {
       ]
     });
     actionSheet.present();
+  }
+
+  irConvitesAceitos(){
+
+    this.navCtrl.push(ConvitesAceitos);
   }
 
   updateFesta(festaId, festaNome){
@@ -158,54 +168,6 @@ export class Festa {
   }
 
   addFesta(){
-    let prompt = this.alertCtrl.create({
-      title: 'Festa Name',
-      message: "Coloque as informações da festa",
-      inputs: [
-        {
-          name: 'nome',
-          placeholder: 'nome'
-        },
-        {
-          name: 'data',
-          placeholder: 'data'
-        },
-        {
-          name: 'local',
-          placeholder: 'local'
-        },
-        {
-          name: 'tema',
-          placeholder: 'tema'
-        },
-        {
-          name: 'buget',
-          placeholder: 'valor'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.festas.push({
-              nome: data.nome,
-              data: data.data,
-              local: data.local,
-              tema: data.tema,
-              dono: this.key,
-              buget: data.buget
-            });
-          }
-        }
-      ]
-    });
-    prompt.present();
+    this.navCtrl.push(AdicionarFesta);
   }
-
 }

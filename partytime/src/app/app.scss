@@ -18,3 +18,25 @@
   background: #1c2627 url("../assets/img/baloes.png") ;
   object-fit: cover;
 }
+
+.fundo-botao1{
+        background: #1c2627 url("../assets/img/fundoBotao.jpg");
+}
+.fundo-botao2{
+        background: #1c2627 url("../assets/img/fundoBotao2.jpg");
+}
+.fundo-botao3{
+        background: #1c2627 url("../assets/img/fundoBotao3.jpg");
+}
+
+.fundo-painel{
+        background: #1c2627 url("../assets/img/painel.jpg");
+}
+
+@font-face {
+      font-family: "axis";
+      src: url("../assets/font/axis.otf") format("opentype");
+      }
+h4{
+    font-family: "axis";
+  }

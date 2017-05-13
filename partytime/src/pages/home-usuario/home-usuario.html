@@ -15,31 +15,21 @@
 
 <ion-content padding>
 
-
-
-    <ion-toolbar class="bar-profile">
-      <ion-item no-lines class="item-bar-profile">
-        <ion-avatar>
-          <img style="box-shadow: 5px 5px 5px grey;" class="button centered" src="{{registerCredentials.foto}}" >
-        </ion-avatar>
-        <span class="user-title centered" style="text-shadow: 2px 2px 4px #000000; margin-top: 10px" > Bem vindo, {{registerCredentials.nome}}! </span>
-      </ion-item>
+  <ion-toolbar class="bar-profile fundo-painel">
+    <ion-item no-lines class="item-bar-profile">
+      <ion-avatar>
+        <img style="box-shadow: 5px 5px 5px grey;" class="button centered" src="{{registerCredentials.foto}}" >
+      </ion-avatar>
+      <span class="user-title centered" style="margin-top: 10px" > <h4>Bem vindo, {{registerCredentials.nome}}! </h4></span>
+    </ion-item>
   </ion-toolbar>
-
-
-  <div class="row">
-    <button ion-button color="dark"  block large outline (click)="goToFesta()"  ><ion-icon name="medical"></ion-icon>
-      Festas
-    </button>
-  </div>
-  <div class="row">
-    <button ion-button color="dark" block large outline (click)="goToConvites()"> <ion-icon name="medical"></ion-icon>
-      Ver Convites </button>
-  </div>
-
-  <div class="row">
-        <button ion-button color="dark" block  large outline (click)="goToAmigos()"> <ion-icon name="medical"></ion-icon>
-          Ver Amigos </button>
-  </div>
-
+  <button class="tamanho-botao fundo-botao2 " ion-button color="dark"outline (click)="goToFesta()">
+    <h4>Festas</h4>
+  </button>
+  <button class="tamanho-botao fundo-botao1 " ion-button color="dark" outline (click)="goToConvites()">
+    <h4>Ver Convites</h4>
+  </button>
+  <button class="tamanho-botao fundo-botao3" ion-button color="dark"outline (click)="goToAmigos()">
+    <h4>Ver Amigos</h4>
+  </button>
 </ion-content>

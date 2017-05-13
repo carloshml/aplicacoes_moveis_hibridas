@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
-import {ConviteRealizado} from './conviterealizado'
+import {ConviteRealizado} from './conviterealizado';
+import { DetalhesConvite } from '../detalhes-convite/detalhes-convite';
 
 /**
 * Generated class for the Convites page.
@@ -53,13 +54,17 @@ export class Convites {
 
     this.convites.subscribe( convites=>{
       convites.map( convite =>{
-        this.convitesRealizados = new Array<ConviteRealizado>();;
+        this.convitesRealizados = new Array<ConviteRealizado>();
         this.af.database.object('/festas/'+convite.idfesta).subscribe(snapshot => {
           this.af.database.object('/usuarios/'+convite.convidante).subscribe(snapshot2 => {
             this.conviteRealizado = new ConviteRealizado();
             this.conviteRealizado.festa = snapshot.nome;
+            this.conviteRealizado.data = snapshot.data;
+            this.conviteRealizado.local = snapshot.local;
             this.conviteRealizado.convidante = snapshot2.nome;
             this.conviteRealizado.item = convite.nomeItem;
+            this.conviteRealizado.data =convite.data;
+            this.conviteRealizado.local =convite.local;
             this.conviteRealizado.valorItem = convite.valorItem;
             this.conviteRealizado.idConvite = convite.$key;
             this.convitesRealizados.push(this.conviteRealizado);

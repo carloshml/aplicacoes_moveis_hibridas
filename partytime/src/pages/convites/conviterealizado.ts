@@ -4,4 +4,6 @@ export class ConviteRealizado{
   item:string;
   valorItem:string;
   idConvite:string;
+  data:string;
+  local:string;
 }

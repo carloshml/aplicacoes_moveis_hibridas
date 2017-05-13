@@ -13,8 +13,11 @@ import { Festa } from '../pages/festa/festa';
 
 
 import { Convidar } from '../pages/convidar/convidar';
+import { ConvitesAceitos } from '../pages/convites-aceitos/convites-aceitos';
 import { Amigos } from '../pages/amigos/amigos';
 import { Convites } from '../pages/convites/convites';
+import { AdicionarFesta } from '../pages/adicionar-festa/adicionar-festa';
+
 
 
 import { Facebook } from '@ionic-native/facebook';
@@ -41,7 +44,8 @@ export const firebaseConfig = {
     Amigos,
     Convites,
     Convidar,
-
+    ConvitesAceitos,
+    AdicionarFesta
 
 
   ],
@@ -60,6 +64,8 @@ export const firebaseConfig = {
     Amigos,
     Convites,
     Convidar,
+    ConvitesAceitos,
+    AdicionarFesta
   ],
   providers: [
     AuthService,
