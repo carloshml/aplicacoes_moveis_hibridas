@@ -51,6 +51,7 @@ export class Amigos {
 
     this.amigos.subscribe( amigos=>{
       amigos.map( amigo =>{
+        this.usuarios= new Array<Usuario>();
         this.af.database.object('/usuarios/'+amigo.keyAmigo).subscribe(snapshot => {
           this.amigo = new Usuario();
           this.amigo.nome= snapshot.nome;

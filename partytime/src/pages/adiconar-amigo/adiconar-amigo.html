@@ -16,15 +16,17 @@
   (ionCancel)="onCancel()">
 </ion-searchbar>
 
-    <ion-list>
-      <ion-item *ngFor="let usuario of usuarios | async">
-        <ion-avatar item-left>
-          <img src="{{usuario?.foto}}">
-        </ion-avatar>
-        <h2>  {{usuario.nome}}</h2>
-        <button ion-button large item-right (click)="addAmigo(usuario.$key)" ><ion-icon name="add-circle" ></ion-icon></button>
-      </ion-item>
-    </ion-list>
+<ion-list>
+  <div *ngFor="let usuario of usuarios | async">
+    <ion-item class="" *ngIf="usuario.$key != key">
+      <ion-avatar item-left>
+        <img src="{{usuario?.foto}}">
+      </ion-avatar>
+      <h2>  {{usuario.nome}}</h2>
+      <button ion-button large item-right (click)="addAmigo(usuario.$key)" ><ion-icon name="add-circle" ></ion-icon></button>
+    </ion-item>
+  </div>
+</ion-list>
 
 
 
