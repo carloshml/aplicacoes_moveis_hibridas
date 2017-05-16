@@ -17,6 +17,7 @@ import { ConvitesAceitos } from '../pages/convites-aceitos/convites-aceitos';
 import { Amigos } from '../pages/amigos/amigos';
 import { Convites } from '../pages/convites/convites';
 import { AdicionarFesta } from '../pages/adicionar-festa/adicionar-festa';
+import { FestaDetalhes } from '../pages/festa-detalhes/festa-detalhes';
 
 
 
@@ -45,7 +46,8 @@ export const firebaseConfig = {
     Convites,
     Convidar,
     ConvitesAceitos,
-    AdicionarFesta
+    AdicionarFesta,
+    FestaDetalhes
 
 
   ],
@@ -65,7 +67,8 @@ export const firebaseConfig = {
     Convites,
     Convidar,
     ConvitesAceitos,
-    AdicionarFesta
+    AdicionarFesta,
+    FestaDetalhes
   ],
   providers: [
     AuthService,

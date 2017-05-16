@@ -20,16 +20,68 @@
       <ion-avatar>
         <img style="box-shadow: 5px 5px 5px grey;" class="button centered" src="{{registerCredentials.foto}}" >
       </ion-avatar>
-      <span class="user-title centered" style="margin-top: 10px" > <h4>Bem vindo, {{registerCredentials.nome}}! </h4></span>
+      <span class="user-title centered" style="margin-top: 15px" > <h4>Bem vindo, {{registerCredentials.nome}}! </h4></span>
     </ion-item>
   </ion-toolbar>
-  <button class="tamanho-botao fundo-botao2 " ion-button color="dark"outline (click)="goToFesta()">
-    <h4>Festas</h4>
-  </button>
-  <button class="tamanho-botao fundo-botao1 " ion-button color="dark" outline (click)="goToConvites()">
-    <h4>Ver Convites</h4>
-  </button>
-  <button class="tamanho-botao fundo-botao3" ion-button color="dark"outline (click)="goToAmigos()">
-    <h4>Ver Amigos</h4>
-  </button>
+
+  <ion-list>
+    <div *ngFor="let convite of convitesRealizados">
+      <ion-card *ngIf="convite.isNovo"  >
+        <ion-card-header >
+          <h3>Convite Novo</h3>
+          <h3> {{convite.festa}}</h3>
+        </ion-card-header>
+        <ion-item-sliding >
+          <ion-item>
+            <p>Item : {{convite.item}} </p>
+            <p> Valor {{convite.valorItem}} </p>
+            <p>Data: {{convite.data }}</p>
+            <p>Local: {{convite.local}}</p>
+            <p>Você foi convidado por</p>
+            <p>{{convite.convidante}} </p>
+          </ion-item>
+          <!--
+          <ion-item>
+          <ion-datetime displayFormat="DD/MM/YYYY"  [(ngModel)]="data"
+          monthNames="janeiro, fevereiro, março,abril, maio, junho, julho,agosto,setembro,outubro,novembro,dezembro "
+          doneText="terminar"
+          >
+        </ion-datetime>
+      </ion-item>
+    -->
+    <ion-item-options side="right">
+      <button ion-button class="botao-largura botao-verde" (click)="aceitarFesta(convite.idConvite)" >
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+      <button ion-button class="botao-largura" color="danger"   (click)="negarFesta(convite.idConvite)" >
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-card>
+</div>
+</ion-list>
+
+<ion-row>
+  <ion-col col-6>
+    <button class="tamanho-botao fundo-botao2 " ion-button color="dark"outline (click)="goToFesta()">
+      <h4>Festas</h4>
+    </button>
+  </ion-col>
+  <ion-col col-6>
+    <button class="tamanho-botao fundo-botao1 " ion-button color="dark" outline (click)="goToConvites()">
+      <h4>Ver Convites</h4>
+    </button>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col col-6>
+    <button class="tamanho-botao fundo-botao3" ion-button color="dark"outline (click)="goToAmigos()">
+      <h4>Ver Amigos</h4>
+    </button>
+  </ion-col>
+  <ion-col col-6>
+  </ion-col >
+
+</ion-row>
 </ion-content>
