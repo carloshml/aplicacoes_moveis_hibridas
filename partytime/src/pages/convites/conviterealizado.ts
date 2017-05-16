@@ -6,4 +6,5 @@ export class ConviteRealizado{
   idConvite:string;
   data:string;
   local:string;
+  isNovo:boolean;
 }

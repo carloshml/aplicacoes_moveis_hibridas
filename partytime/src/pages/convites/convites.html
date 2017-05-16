@@ -23,12 +23,22 @@
           <p>Data: {{convite.data }}</p>
           <p>Local: {{convite.local}}</p>
           <p> Você foi convidado por {{convite.convidante}} </p>
+
         </ion-item>
+        <!--
+        <ion-item>
+          <ion-datetime displayFormat="DD/MM/YYYY"  [(ngModel)]="data"
+            monthNames="janeiro, fevereiro, março,abril, maio, junho, julho,agosto,setembro,outubro,novembro,dezembro "
+            doneText="terminar"
+            >
+          </ion-datetime>
+        </ion-item>
+        -->
         <ion-item-options side="right">
-          <button ion-button  (click)="aceitarFesta(convite.idConvite)" >
+          <button class="botao-largura botao-verde" ion-button  (click)="aceitarFesta(convite.idConvite)" >
             <ion-icon name="checkmark"></ion-icon>
           </button>
-          <button ion-button color="danger"   (click)="negarFesta(convite.idConvite)" >
+          <button class="botao-largura" ion-button color="danger"   (click)="negarFesta(convite.idConvite)" >
             <ion-icon name="close"></ion-icon>
           </button>
         </ion-item-options>

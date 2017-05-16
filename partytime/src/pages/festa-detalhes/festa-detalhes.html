@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Festa X</ion-title>
+    <ion-title>Dados da Festa</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,24 +9,34 @@
 
 <ion-content padding>
 
-  <div class="row">
-      <button ion-button color="dark"  outline (click)="goToConvidar()" > <ion-icon name="medical"></ion-icon>
-         Convidar  </button>
-  </div>
+  <ion-item>
+    <ion-label color="primary"   >Nome da Festa</ion-label>
+    <ion-input required  [(ngModel)]="nome"></ion-input>
+  </ion-item>
 
-  <div class="row">
-    Marcelo <br>
-    item 01 <br>
-    aceito <br> <br> <br> <br>
-  </div>
+  <ion-item>
+    <ion-label color="primary"   >Local</ion-label>
+    <ion-input required value="Loca da festa"  [(ngModel)]="local"></ion-input>
+  </ion-item>
 
-  <ion-list>
+  <ion-item>
+    <ion-label color="primary"   >Valor da Festa</ion-label>
+    <ion-input required type="number"  [(ngModel)]="buget"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary"   >Tema da Festa</ion-label>
+    <ion-input required  [(ngModel)]="tema"></ion-input>
+  </ion-item>
 
-    <ion-item>
-      <ion-label fixed>{{festaSelecionada.nome}}</ion-label>
+<ion-item>
+  <ion-label>Data</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="data"
+    monthNames="janeiro, fevereiro, março,abril, maio, junho, julho,agosto,setembro,outubro,novembro,dezembro "
+    doneText="terminar"
+    >
+  </ion-datetime>
+</ion-item>
 
-    </ion-item>
-
-  </ion-list>
+<button ion-button  (click)="updadeFesta()" name="button"> Atualizar os Dados </button>
 
 </ion-content>

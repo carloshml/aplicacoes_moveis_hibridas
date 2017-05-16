@@ -5,6 +5,7 @@ import { AuthService } from '../../providers/auth.service';
 import {Convidar} from '../convidar/convidar'
 import {ConvitesAceitos} from '../convites-aceitos/convites-aceitos'
 import { AdicionarFesta } from '../adicionar-festa/adicionar-festa';
+import { FestaDetalhes } from '../festa-detalhes/festa-detalhes';
 
 
 @IonicPage()
@@ -15,7 +16,6 @@ import { AdicionarFesta } from '../adicionar-festa/adicionar-festa';
 export class Festa {
   festas: FirebaseListObservable<any>;
   convites : FirebaseListObservable<any>;
-  selectedFesta;
   key = '';
   username = '';
   email = '';
@@ -54,10 +54,6 @@ export class Festa {
             this.temFesta = false;
           }
       });
-
-
-
-
   }
 
   ionViewDidLoad() {
@@ -97,9 +93,13 @@ export class Festa {
             })
           }
         },{
-          text: 'Atualizar o nome',
+          text: 'Atualizar Dados da Festa',
           handler: () => {
-            this.updateFesta(festaId, festaNome);
+            this.navCtrl.push(FestaDetalhes, {
+              id: festaId,
+              nome:festaNome,
+              donoFesta: this.key,
+            })
           }
         },{
           text: 'Cancelar',
@@ -116,38 +116,6 @@ export class Festa {
   irConvitesAceitos(){
 
     this.navCtrl.push(ConvitesAceitos);
-  }
-
-  updateFesta(festaId, festaNome){
-    let prompt = this.alertCtrl.create({
-      title: 'Nome da festa',
-      message: "Update o nome da festa para esse nome",
-      inputs: [
-        {
-          name: 'nome',
-          placeholder: 'Nome',
-          value: festaNome
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-          //  console.log(JSON.stringify(data));
-            this.festas.update(festaId, {
-              nome: data.nome
-            });
-          }
-        }
-      ]
-    });
-    prompt.present();
   }
 
   removeFesta(festaId: string){

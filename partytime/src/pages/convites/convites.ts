@@ -3,20 +3,12 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import {AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth.service';
 import {ConviteRealizado} from './conviterealizado';
-import { DetalhesConvite } from '../detalhes-convite/detalhes-convite';
 
-/**
-* Generated class for the Convites page.
-*
-* See http://ionicframework.com/docs/components/#navigation for more info
-* on Ionic pages and navigation.
-*/
 @IonicPage()
 @Component({
   selector: 'page-convites',
   templateUrl: 'convites.html',
 })
-
 
 export class Convites {
 
@@ -27,8 +19,6 @@ export class Convites {
   key='';
   conviteRealizado : ConviteRealizado = new ConviteRealizado();
   convitesRealizados: Array<ConviteRealizado> = new Array<ConviteRealizado>();
-  //convitesRealizados =[];
-
   constructor(
     public af: AngularFire,
     public navCtrl: NavController,
@@ -44,8 +34,26 @@ export class Convites {
     this.id = info.id;
     this.key = info.key;
 
+    this.saberConvites();
 
-    this.convites = af.database.list('/convites',{
+
+    // = af.database.list('/festas/'+convite.idfesta)
+    // var festa; loop over convites this.convites.subscribe( );
+    /*
+    criar um observable depois fazer um for each dentro depois criar um tipo que
+    contenha todas as coisas e usar esse tipo pra mostrar na view
+    */
+
+  }
+
+  ionViewDidLoad() {
+
+    console.log('ionViewDidLoad Convites');
+  }
+
+
+  saberConvites(){
+    this.convites = this.af.database.list('/convites',{
       query: {
         orderByChild: 'convidado',
         equalTo: this.key,
@@ -63,8 +71,6 @@ export class Convites {
             this.conviteRealizado.local = snapshot.local;
             this.conviteRealizado.convidante = snapshot2.nome;
             this.conviteRealizado.item = convite.nomeItem;
-            this.conviteRealizado.data =convite.data;
-            this.conviteRealizado.local =convite.local;
             this.conviteRealizado.valorItem = convite.valorItem;
             this.conviteRealizado.idConvite = convite.$key;
             this.convitesRealizados.push(this.conviteRealizado);
@@ -74,18 +80,7 @@ export class Convites {
       return convites;
     });
 
-    // = af.database.list('/festas/'+convite.idfesta)
-    // var festa; loop over convites this.convites.subscribe( );
-    /*
-    criar um observable depois fazer um for each dentro depois criar um tipo que
-    contenha todas as coisas e usar esse tipo pra mostrar na view
-    */
-
-  }
-
-  ionViewDidLoad() {
-
-    console.log('ionViewDidLoad Convites');
+    return this.convitesRealizados;
   }
 
 
