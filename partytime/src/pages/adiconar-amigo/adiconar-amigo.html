@@ -23,7 +23,9 @@
         <img src="{{usuario?.foto}}">
       </ion-avatar>
       <h2>  {{usuario.nome}}</h2>
-      <button ion-button large item-right (click)="addAmigo(usuario.$key)" ><ion-icon name="add-circle" ></ion-icon></button>
+      <button ion-button icon-only outline large round item-right (click)="addAmigo(usuario.$key)" >
+        <ion-icon name="add" ></ion-icon>
+      </button>
     </ion-item>
   </div>
 </ion-list>

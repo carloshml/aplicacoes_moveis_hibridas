@@ -70,6 +70,8 @@ export class AdiconarAmigo {
     this.amigos.push({
       keyUsuario: this.key,
       keyAmigo: usuarioKey,
+      isNovo:true,
+      quemFezAmizade: this.key,   
     });
     let alert = this.alertCtrl.create({
       title: 'Pronto!',
