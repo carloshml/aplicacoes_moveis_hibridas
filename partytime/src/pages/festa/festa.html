@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Festas</ion-title>
+    <ion-title class="letra-juanita"> <strong>Festas</strong></ion-title>
     <ion-buttons start>
       <button ion-button icon-only (click)="addFesta()">
         <ion-icon name="add"></ion-icon>
@@ -16,7 +16,7 @@
   <div *ngIf="temFesta; else naoTemFesta " >
     <ion-card *ngFor="let festa of festas | async">
       <ion-card-header class="cor-fundo">
-        <h4>{{festa.nome}}</h4>
+        <h4 class="letra-axis letra-branca">{{festa.nome}}</h4>
       </ion-card-header>
       <ion-list class="tamanho">
         <button ion-item  outline  (click)="showOptions(festa.$key, festa.nome)"  >

@@ -1,15 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons start>
-      <button ion-button (click)="logout()" icon-only color="royal" >
-        <ion-icon name="log-out"></ion-icon>
-
-      </button>
-    </ion-buttons>
-    <ion-navbar>
-      <ion-title>Home</ion-title>
-    </ion-navbar>
-  </ion-toolbar>
+  <div class="cordefundo">
+    <ion-navbar >
+    <ion-toolbar>
+      <ion-buttons start>
+        <button ion-button (click)="logout()" icon-only color="royal" >
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title class=" letra-topo letra-juanita"> <strong>Home</strong></ion-title>
+    </ion-toolbar>
+  </ion-navbar>
+    </div>
 </ion-header>
 
 
@@ -64,19 +65,19 @@
 
 <ion-row>
   <ion-col col-6>
-    <button class="tamanho-botao fundo-botao2 " ion-button color="dark"outline (click)="goToFesta()">
+    <button class="tamanho-botao letra-axis fundo-botao2 " ion-button color="dark"outline (click)="goToFesta()">
       <h4>Festas</h4>
     </button>
   </ion-col>
   <ion-col col-6>
-    <button class="tamanho-botao fundo-botao1 " ion-button color="dark" outline (click)="goToConvites()">
+    <button class="tamanho-botao letra-axis fundo-botao1 " ion-button color="dark" outline (click)="goToConvites()">
       <h4>Ver Convites</h4>
     </button>
   </ion-col>
 </ion-row>
 <ion-row>
   <ion-col col-6>
-    <button class="tamanho-botao fundo-botao3" ion-button color="dark"outline (click)="goToAmigos()">
+    <button class="tamanho-botao letra-axis fundo-botao3" ion-button color="dark"outline (click)="goToAmigos()">
       <h4>Ver Amigos</h4>
     </button>
   </ion-col>

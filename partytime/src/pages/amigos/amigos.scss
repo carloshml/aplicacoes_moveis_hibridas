@@ -1,8 +1,4 @@
 page-amigos {
-  p {
-      font-family: "axis";
-      font-size: 15px;
-    }
   .botao{
     margin: 0px !important;
     padding: 0px !important;
@@ -10,6 +6,12 @@ page-amigos {
   .nova-amizade{
     border-radius: 30px !important;
     background-color: #f0f873;
+  }
+
+  h3, p, h4,span {
+
+    font-family: "axis";
+    font-size: 15px;
   }
 
 }

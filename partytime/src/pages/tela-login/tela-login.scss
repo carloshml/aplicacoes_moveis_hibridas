@@ -14,7 +14,8 @@ page-tela-login {
    .login-content {
 
      .login-box {
-       background: #f19558;
+       //background: #f19558;
+       background: none;
      }
 
      ion-row {
@@ -42,11 +43,13 @@ page-tela-login {
       }
 
       .submit-btn {
+        margin-top: 90px;
+        margin-bottom: 50px;
         background: #3b5998;
         border-radius: 10px !important;
-        border: 1px solid #ffffff;
+        border: 2px solid #ffffff;
         font-size: 0.9em;
-        height: 30px;
+        height: 50px;
       }
 
       .register-btn {

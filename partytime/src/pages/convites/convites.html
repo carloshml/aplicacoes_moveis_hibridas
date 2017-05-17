@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Convites Recebidos</ion-title>
+    <ion-title class="letra-juanita"> <strong>Convites Recebidos</strong></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,8 +13,8 @@
     <ion-card *ngFor="let convite of convitesRealizados" >
       <ion-card-header >
 
-        <h3>Você vou convidado para</h3>
-        <h3> {{convite.festa}}</h3>
+        <h3 class="letra-branca">Você foi convidado para</h3>
+        <h3 class="letra-branca"> {{convite.festa}}</h3>
       </ion-card-header>
       <ion-item-sliding >
         <ion-item>

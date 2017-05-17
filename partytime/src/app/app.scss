@@ -37,6 +37,14 @@
       font-family: "axis";
       src: url("../assets/font/axis.otf") format("opentype");
       }
-h4{
+
+@font-face {
+        font-family: "DKJambo";
+        src: url("../assets/font/DKJambo.otf") format("opentype");
+            }
+.letra-axis{
     font-family: "axis";
   }
+.letra-juanita{
+   font-family: "DKJambo";
+    }

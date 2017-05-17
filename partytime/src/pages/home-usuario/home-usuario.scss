@@ -5,7 +5,15 @@ page-home-usuario {
   h3{
     width: 100%;
   }
-  h3, p {
+
+.cordefundo{
+  background-color:  #fbac3b !important;
+}
+
+  .letra-topo{
+       font-size: 30px;
+  }
+  h3, p, h4 {
 
     font-family: "axis";
     font-size: 15px;
@@ -28,7 +36,7 @@ page-home-usuario {
     color: white;
     //text-shadow: 3px 2px black;
     font-size: 15px;
-    text-shadow: 1px 1px 6px black;
+    text-shadow: 1px 1px 6px black ;
   }
   .tamanho-botao{
     width: 160px ;
