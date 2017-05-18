@@ -1,6 +1,5 @@
 <ion-header>
-  <div class="cordefundo">
-    <ion-navbar >
+  <ion-navbar color="background">
     <ion-toolbar>
       <ion-buttons start>
         <button ion-button (click)="logout()" icon-only color="royal" >
@@ -10,7 +9,6 @@
       <ion-title class=" letra-topo letra-juanita"> <strong>Home</strong></ion-title>
     </ion-toolbar>
   </ion-navbar>
-    </div>
 </ion-header>
 
 
@@ -36,7 +34,7 @@
           <ion-item>
             <p>Item : {{convite.item}} </p>
             <p> Valor {{convite.valorItem}} </p>
-            <p>Data: {{convite.data }}</p>
+            <p>Data: {{ dataConvite(convite.data) }}</p>
             <p>Local: {{convite.local}}</p>
             <p>Você foi convidado por</p>
             <p>{{convite.convidante}} </p>

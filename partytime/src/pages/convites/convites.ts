@@ -109,4 +109,11 @@ export class Convites {
 
   }
 
+  dataConvite( data:string){
+    var a : Array<string>  ;
+    a=data.split('-');
+    return a[2]+'/'+a[1]+'/'+a[0];
+
+  }
+
 }

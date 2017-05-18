@@ -53,7 +53,6 @@ export class AdiconarAmigo {
       query: {
         orderByChild:'nome',
         startAt: term ,
-        limitToLast: 6,
       }
 
     });
@@ -71,7 +70,7 @@ export class AdiconarAmigo {
       keyUsuario: this.key,
       keyAmigo: usuarioKey,
       isNovo:true,
-      quemFezAmizade: this.key,   
+      quemFezAmizade: this.key,
     });
     let alert = this.alertCtrl.create({
       title: 'Pronto!',

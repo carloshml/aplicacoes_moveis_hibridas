@@ -21,9 +21,12 @@ export class Amigos {
   amigosdoUsuarioAux: FirebaseObjectObservable<any>;
   amigo : Amizade = new Amizade();
   usuarios: Array<Amizade> = new Array<Amizade>();
+  novosUsuarios: Array<Amizade> = new Array<Amizade>();
   info ;
   nomeAmigos;
   temAmigos=true;
+  temAmigos1=true;
+  temAmigos2=true;
 
   constructor(
     public navCtrl: NavController,
@@ -61,9 +64,18 @@ alert( JSON.stringify(this.usuarios));
 
 */
 }
+ionViewDidLoad(){
+  this.comeco();
+}
 
-ionViewDidLoad() {
-  this.amigos = this.af.database.list('/amigos');
+comeco() {
+  this.usuarios= new Array<Amizade>();
+  this.amigos = this.af.database.list('/amigos',{
+    query:{
+      orderByChild:"keyAmigo",
+      equalTo: this.key,
+    }
+  });
   this.amigos.subscribe( amigos=>{
     if (amigos.length>0){
       this.temAmigos = true;
@@ -86,10 +98,46 @@ ionViewDidLoad() {
         });
       });
     }else{
-      this.temAmigos = false;
+      this.temAmigos1 = false;
     }
-
   });
+
+  this.af.database.list('/amigos',{
+   query:{
+     orderByChild:"keyUsuario",
+     equalTo: this.key,
+   }
+ }).subscribe( amigos=>{
+   if (amigos.length>0){
+     this.temAmigos = true;
+     amigos.map( amigo =>{
+      this.novosUsuarios= new Array<Amizade>();
+      this.novoAf.database.object('/usuarios/'+amigo.keyAmigo).subscribe(snapshot => {
+        this.novoAf.database.object('/usuarios/'+amigo.keyUsuario).subscribe(snapshot2 => {
+           this.amigo = new Amizade();
+           this.amigo.nome= snapshot.nome;
+           this.amigo.foto = snapshot.foto;
+           this.amigo.key = snapshot.$key;
+           this.amigo.keyAmizade = amigo.$key;
+           this.amigo.nome2= snapshot2.nome;
+           this.amigo.foto2 = snapshot2.foto;
+           this.amigo.key2 = snapshot2.$key;
+           this.amigo.amizadeNova = amigo.isNovo;
+           this.amigo.quemFezAmizade= amigo.quemFezAmizade;
+           this.novosUsuarios.push(this.amigo);
+         });
+       });
+     });
+   }else{
+     this.temAmigos2 = false;
+   }
+ });
+
+ if((this.temAmigos1==false)&&(this.temAmigos2==false) ){
+   this.temAmigos=false;
+ }
+
+
   console.log('ionViewDidLoad Amigos');
 }
 
@@ -112,6 +160,8 @@ excluirAmizade(keyAmizade,nomeAmigo){
   });
   alert.present();
 
+  this.comeco();
+
 }
 
 aceitarAmizade(keyAmizade,nomeAmigo){
@@ -124,6 +174,7 @@ aceitarAmizade(keyAmizade,nomeAmigo){
     buttons: ['OK']
   });
   alert.present();
+  this.comeco();
 
 }
 

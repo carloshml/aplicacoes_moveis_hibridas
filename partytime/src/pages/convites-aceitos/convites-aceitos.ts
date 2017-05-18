@@ -43,10 +43,10 @@ export class ConvitesAceitos {
     this.convites.subscribe( convites=>{
       convites.map( convite =>{
         this.amigos = new Array<Usuario>();
-
         this.af.database.object('/usuarios/'+convite.convidado).subscribe(usuario => {
           this.amigo = new Usuario();
           this.amigo.isaceito = convite.isaceito;
+          this.amigo.item = convite.nomeItem;          
           this.amigo.nome = usuario.nome;
           this.amigo.foto = usuario.foto;
           this.amigos.push(this.amigo);

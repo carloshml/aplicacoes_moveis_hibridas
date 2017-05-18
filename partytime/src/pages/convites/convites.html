@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="background">
     <ion-title class="letra-juanita"> <strong>Convites Recebidos</strong></ion-title>
   </ion-navbar>
 
@@ -20,7 +20,7 @@
         <ion-item>
           <p>Item : {{convite.item}} </p>
           <p> Valor {{convite.valorItem}} </p>
-          <p>Data: {{convite.data }}</p>
+          <p>Data: {{dataConvite(convite.data)}}</p>
           <p>Local: {{convite.local}}</p>
           <p> Você foi convidado por {{convite.convidante}} </p>
 

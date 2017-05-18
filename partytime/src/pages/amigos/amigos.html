@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="background">
     <ion-title class="letra-juanita"> <strong>Amigos</strong></ion-title>
 
     <ion-buttons start>
@@ -49,6 +49,60 @@
       </div>
 
       <div class=""  *ngFor="let amigo of usuarios ">
+        <ion-item *ngIf="amigo.key != key ; else amizadeAvessa" >
+          <span>{{amigo?.nome}}</span>
+          <ion-avatar item-left>
+            <img src="{{amigo?.foto}}">
+          </ion-avatar>
+          <button ion-button icon-only outline large round item-right color="danger" (click)="excluirAmizade(amigo.keyAmizade,amigo.nome)" >
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-item>
+        <ng-template #amizadeAvessa>
+          <ion-item  >
+            <span>{{amigo?.nome2}}</span>
+            <ion-avatar item-left>
+              <img src="{{amigo?.foto2}}">
+            </ion-avatar>
+            <button ion-button icon-only outline large round item-right color="danger" (click)="excluirAmizade(amigo.keyAmizade,amigo.nome2)" >
+              <ion-icon name="close"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-template>
+      </div>
+
+      <div class="" *ngFor="let amigo of novosUsuarios">
+        <div class="" *ngIf="amigo.amizadeNova">
+        <ion-item class="nova-amizade" *ngIf="amigo.quemFezAmizade != key" >
+
+          <ion-row>
+            <ion-col col-3>
+              <ion-avatar item-left>
+                <img src="{{amigo?.foto2}}">
+              </ion-avatar>
+            </ion-col>
+            <ion-col col-6>
+              <p> Nova amizade </p>
+              <p> {{amigo.nome2}}</p>
+            </ion-col>
+            <ion-col col-3>
+              <ion-row>
+                <button class="botao" ion-button icon-only color="danger" round outline item-right (click)="excluirAmizade(amigo.keyAmizade,amigo.nome2)" >
+                  <ion-icon name="close"></ion-icon>
+                </button>
+              </ion-row>
+              <ion-row>
+                <button class="botao" ion-button icon-only round outline  item-right (click)="aceitarAmizade(amigo.keyAmizade,amigo.nome2)" >
+                  <ion-icon name="checkmark"></ion-icon>
+                </button>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+          </div>
+      </div>
+
+      <div class=""  *ngFor="let amigo of novosUsuarios ">
         <ion-item *ngIf="amigo.key != key ; else amizadeAvessa" >
           <span>{{amigo?.nome}}</span>
           <ion-avatar item-left>
